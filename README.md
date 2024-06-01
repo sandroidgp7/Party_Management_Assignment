@@ -1,4 +1,6 @@
 # GFTPLPartyManagement
+Assignment Project for greatfuturetechno.
+The has complete token base login and jwt token intercepted on authentication.Has complete crud cycle for party management.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
 

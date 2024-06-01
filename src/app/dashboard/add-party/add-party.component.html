@@ -1,0 +1,288 @@
+<h1>{{title}}</h1>
+<!-- <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="mb-3 col">
+            <label class="form-label">Name</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <div *ngIf="f['name'].errors['required']">Name is required</div>
+            </div>
+        </div>
+        <div class="mb-3 col">
+            <label class="form-label">Company Name</label>
+            <input type="text" formControlName="company_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['company_name'].errors }" />
+            <div *ngIf="submitted && f['company_name'].errors" class="invalid-feedback">
+                <div *ngIf="f['company_name'].errors['required']">Company Name is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
+            <label class="form-label">Mobile No</label>
+            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+        </div>
+        <div class="mb-3 col">
+            <label class="form-label">
+                Password
+                <em *ngIf="id">(Leave blank to keep the same password)</em>
+            </label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <button [disabled]="submitting" class="btn btn-primary">
+            <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+            Save
+        </button>
+        <a routerLink="/users" class="btn btn-link">Cancel</a>
+    </div>
+</form> -->
+
+<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+            <div *ngIf="form.controls['name']?.invalid && (form.controls['name']?.dirty || form.controls['name']?.touched)"
+                class="text-danger">
+                Name is required.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="company_name" class="form-label">Company Name</label>
+            <input type="text" class="form-control" id="company_name" formControlName="company_name">
+            <div *ngIf="form.controls['company_name']?.invalid && (form.controls['company_name']?.dirty || form.controls['company_name']?.touched)"
+                class="text-danger">
+                Company Name is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="mobile_no" class="form-label">Mobile No</label>
+            <input type="text" class="form-control" id="mobile_no" formControlName="mobile_no">
+            <div *ngIf="form.controls['mobile_no']?.invalid && (form.controls['mobile_no']?.dirty || form.controls['mobile_no']?.touched)"
+                class="text-danger">
+                Valid Mobile No is required.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="telephone_no" class="form-label">Telephone No</label>
+            <input type="text" class="form-control" id="telephone_no" formControlName="telephone_no">
+            <div *ngIf="form.controls['telephone_no']?.invalid && (form.controls['telephone_no']?.dirty || form.controls['telephone_no']?.touched)"
+                class="text-danger">
+                Valid Telephone No is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="whatsapp_no" class="form-label">WhatsApp No</label>
+            <input type="text" class="form-control" id="whatsapp_no" formControlName="whatsapp_no">
+            <div *ngIf="form.controls['whatsapp_no']?.invalid && (form.controls['whatsapp_no']?.dirty || form.controls['whatsapp_no']?.touched)"
+                class="text-danger">
+                Valid WhatsApp No is required.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+            <div *ngIf="form.controls['email']?.invalid && (form.controls['email']?.dirty || form.controls['email']?.touched)"
+                class="text-danger">
+                Valid Email is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="remark" class="form-label">Remark</label>
+        <textarea class="form-control" id="remark" formControlName="remark" rows="2"></textarea>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="login_access" formControlName="login_access">
+        <label class="form-check-label" for="login_access">Login Access</label>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="date_of_birth" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="date_of_birth" formControlName="date_of_birth">
+            <div *ngIf="form.controls['date_of_birth']?.invalid && (form.controls['date_of_birth']?.dirty || form.controls['date_of_birth']?.touched)"
+                class="text-danger">
+                Date of Birth is required.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="anniversary_date" class="form-label">Anniversary Date</label>
+            <input type="date" class="form-control" id="anniversary_date" formControlName="anniversary_date">
+            <div *ngIf="form.controls['anniversary_date']?.invalid && (form.controls['anniversary_date']?.dirty || form.controls['anniversary_date']?.touched)"
+                class="text-danger">
+                Anniversary Date is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="gstin" class="form-label">GSTIN</label>
+            <input type="text" class="form-control" id="gstin" formControlName="gstin">
+            <div *ngIf="form.controls['gstin']?.invalid && (form.controls['gstin']?.dirty || form.controls['gstin']?.touched)"
+                class="text-danger">
+                GSTIN is required.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="pan_no" class="form-label">PAN No</label>
+            <input type="text" class="form-control" id="pan_no" formControlName="pan_no">
+            <div *ngIf="form.controls['pan_no']?.invalid && (form.controls['pan_no']?.dirty || form.controls['pan_no']?.touched)"
+                class="text-danger">
+                PAN No is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="apply_tds" formControlName="apply_tds">
+        <label class="form-check-label" for="apply_tds">Apply TDS</label>
+    </div>
+
+    <div class="mb-3">
+        <label for="credit_limit" class="form-label">Credit Limit</label>
+        <input type="number" class="form-control" id="credit_limit" formControlName="credit_limit">
+        <div *ngIf="form.controls['credit_limit']?.invalid && (form.controls['credit_limit']?.dirty || form.controls['credit_limit']?.touched)"
+            class="text-danger">
+            Credit Limit is required.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Addresses</label>
+        <div formArrayName="address">
+            <div *ngFor="let address of addressControls; let i = index" [formGroupName]="i"
+                class="border rounded p-3 mb-3">
+                <div class="mb-3">
+                    <label for="address_line_1_{{i}}" class="form-label">Address Line 1</label>
+                    <input type="text" class="form-control" id="address_line_1_{{i}}" formControlName="address_line_1">
+                    <div *ngIf="getAddressControls(i)['address_line_1']?.invalid && (getAddressControls(i)['address_line_1']?.dirty || getAddressControls(i)['address_line_1']?.touched)"
+                        class="text-danger">
+                        Address Line 1 is required.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="address_line_2_{{i}}" class="form-label">Address Line 2</label>
+                    <input type="text" class="form-control" id="address_line_2_{{i}}" formControlName="address_line_2">
+                </div>
+                <div class="mb-3">
+                    <label for="country_{{i}}" class="form-label">Country</label>
+                    <input type="text" class="form-control" id="country_{{i}}" formControlName="country">
+                    <div *ngIf="getAddressControls(i)['country']?.invalid && (getAddressControls(i)['country']?.dirty || getAddressControls(i)['country']?.touched)"
+                        class="text-danger">
+                        Country is required.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="state_{{i}}" class="form-label">State</label>
+                    <input type="text" class="form-control" id="state_{{i}}" formControlName="state">
+                    <div *ngIf="getAddressControls(i)['state']?.invalid && (getAddressControls(i)['state']?.dirty || getAddressControls(i)['state']?.touched)"
+                        class="text-danger">
+                        State is required.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="city_{{i}}" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city_{{i}}" formControlName="city">
+                    <div *ngIf="getAddressControls(i)['city']?.invalid && (getAddressControls(i)['city']?.dirty || getAddressControls(i)['city']?.touched)"
+                        class="text-danger">
+                        City is required.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="pincode_{{i}}" class="form-label">Pincode</label>
+                    <input type="text" class="form-control" id="pincode_{{i}}" formControlName="pincode">
+                    <div *ngIf="getAddressControls(i)['pincode']?.invalid && (getAddressControls(i)['pincode']?.dirty || getAddressControls(i)['pincode']?.touched)"
+                        class="text-danger">
+                        Pincode is required.
+                    </div>
+                </div>
+                <button type="button" class="btn btn-danger" (click)="removeAddress(i)" *ngIf="i > 0">Delete</button>
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary" (click)="addAddress()">Add Another Address</button>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Bank Details</label>
+        <div formArrayName="bank">
+            <div *ngFor="let bank of bankControls; let i = index" [formGroupName]="i" class="border rounded p-3 mb-3">
+                <div class="mb-3">
+                    <label for="bank_ifsc_code_{{i}}" class="form-label">Bank IFSC Code</label>
+                    <input type="text" class="form-control" id="bank_ifsc_code_{{i}}" formControlName="bank_ifsc_code">
+                    <div *ngIf="geBankControl(i)['bank_ifsc_code']?.invalid && (geBankControl(i)['bank_ifsc_code']?.dirty || geBankControl(i)['bank_ifsc_code']?.touched)"
+                        class="text-danger">
+                        Bank IFSC Code is required.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="bank_name_{{i}}" class="form-label">Bank Name</label>
+                    <input type="text" class="form-control" id="bank_name_{{i}}" formControlName="bank_name">
+                    <div *ngIf="geBankControl(i)['bank_name']?.invalid && (geBankControl(i)['bank_name']?.dirty || geBankControl(i)['bank_name']?.touched)"
+                        class="text-danger">
+                        Bank Name is required.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="branch_name_{{i}}" class="form-label">Branch Name</label>
+                    <input type="text" class="form-control" id="branch_name_{{i}}" formControlName="branch_name">
+                    <div *ngIf="geBankControl(i)['branch_name']?.invalid && (geBankControl(i)['branch_name']?.dirty || geBankControl(i)['branch_name']?.touched)"
+                        class="text-danger">
+                        Branch Name is required.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="account_no_{{i}}" class="form-label">Account No</label>
+                    <input type="text" class="form-control" id="account_no_{{i}}" formControlName="account_no">
+                    <div *ngIf="geBankControl(i)['account_no']?.invalid && (geBankControl(i)['account_no']?.dirty || geBankControl(i)['account_no']?.touched)"
+                        class="text-danger">
+                        Account No is required.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="account_holder_name_{{i}}" class="form-label">Account Holder Name</label>
+                    <input type="text" class="form-control" id="account_holder_name_{{i}}"
+                        formControlName="account_holder_name">
+                    <div *ngIf="geBankControl(i)['account_holder_name']?.invalid && (geBankControl(i)['account_holder_name']?.dirty || geBankControl(i)['account_holder_name']?.touched)"
+                        class="text-danger">
+                        Account Holder Name is required.
+                    </div>
+                </div>
+                <button type="button" class="btn btn-danger" (click)="removeBank(i)" *ngIf="i > 0">Delete</button>
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary" (click)="addBank()">Add Another Bank</button>
+    </div>
+
+    <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input type="file" class="form-control" id="image" (change)="onFileChange($event)">
+    </div>
+    <div class="mb-3 ">
+        <button [disabled]="submitting" class="btn btn-primary">
+            <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+            Save
+        </button>
+        <a routerLink="/dashboard" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+<div *ngIf="loading" class="text-center m-5">
+    <span class="spinner-border spinner-border-lg align-center"></span>
+</div>

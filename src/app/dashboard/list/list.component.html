@@ -1,0 +1,38 @@
+<h1>Party List</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Party</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 20%">Company Name</th>
+            <th style="width: 20%">Registered Owner</th>
+            <th style="width: 20%">Reg. Date</th>
+            <th style="width: 20%">Mobile</th>
+            <th style="width: 20%">Credit Limit</th>
+        </tr>
+    </thead>
+     
+    <tbody>
+        <tr *ngFor="let party of partyList | slice: (page-1) * pageSize : page * pageSize; track party">
+            <td>{{party.company_name}}</td>
+            <td>{{party.name}}</td>
+            <td>{{party.anniversary_date}}</td>
+            <td>{{party.mobile_no}}</td>
+            <td>{{party.credit_limit}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{party.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
+                <button (click)="deleteParty(party.id)" class="btn btn-sm btn-danger btn-delete-party" [disabled]="party.isDeleting">
+                    <span *ngIf="party.isDeleting" class="spinner-border spinner-border-sm"></span>
+                <span *ngIf="!party.isDeleting">Delete</span>
+            </button>
+        </td>
+    </tr>
+    <tr *ngIf="!partyList">
+        <td colspan="4" class="text-center">
+            <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+    </tr>
+</tbody>
+</table>
+<ngb-pagination [(page)]="page"
+            [pageSize]="pageSize"
+            [collectionSize]="partyList?.length || 0" />
